@@ -15,4 +15,13 @@
 ## Resources
 Every object terraform manages is called a resource.
 
+## Install - On Windows
+Downlod from here: https://developer.hashicorp.com/terraform/install?product_intent=terraform
 
+Add it on the path
+
+To test the installation:
+
+```powershell
+terraform version
+```
