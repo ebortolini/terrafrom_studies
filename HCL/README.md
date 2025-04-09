@@ -23,3 +23,26 @@ resource "local_file" "pet" {
     content = "We love pets!"
 }
 ```
+
+- resource is the block name
+- local_file resource type
+  - local = provider
+  - file=resource
+- pet resource name
+- filename/content are arguments
+
+### Simple Terraform workflow
+- **Step 1:** Write the config file
+- **Step 2:** Run init command
+- **Step 3:** Review the execution plan
+- **Step 4:** Apply the changes
+
+## Update and Destroy
+- Update
+  ```
+  terrafrom apply
+  ```
+- Destroy
+  ```
+  terrafrom destroy
+  ```
