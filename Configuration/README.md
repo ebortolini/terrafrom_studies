@@ -169,3 +169,54 @@ resource "random_pet" "my-pet" {
     length = var.length
 }
 ```
+
+## Resource Dependencies
+
+Implicit dependency like the example in example above
+Explicit dependency, we can do bay using `depends_on`
+
+```terraform
+resource "local_file" "pet" {
+    filename = var.filename
+    depends_on = [
+        random_pet.my-pet
+    ]
+}
+
+resource "random_pet" "my-pet" {
+    prefix = var.prefix
+    separator = var.separator
+    length = var.length
+}
+```
+
+## Output Variables
+
+```
+output "<variable name>" {
+    value = "<variable value>"
+    <arguments>
+}
+```
+
+**Example**
+
+```terraform
+resource "local_file" "pet" {
+    filename = var.filename
+    content = "My favorite pet is ${random_pet.my_pet.id}
+}
+
+resource "random_pet" "my-pet" {
+    prefix = var.prefix
+    separator = var.separator
+    length = var.length
+}
+
+output pet-name {
+    value = random_pet.my-pet.id
+    description = "sme description
+}
+```
+
+After the resource is applied we can use the command `terraform output` to see the output variables
